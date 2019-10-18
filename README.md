@@ -1,6 +1,6 @@
 # Calorie Center
-A simple way to track and log your calories. You can manage and edit your current calorie intake, and track your progress over time as you log your daily caloric intake.
-![demo gif](https://i.imgur.com/4JkErKh.gif)
+A simple way to track and log your calories. You can manage and edit your current calorie intake, and track your progress over time as you log your daily caloric intake.  
+<img src="https://i.imgur.com/4JkErKh.gif " alt="demogif" width="200">  
 # How it works
 Your TDEE is your daily calories that you burn, this is calculated for you as the first step in the app.
 Depending on if you know your Body Fat % or not, the following two forumulas will be used
