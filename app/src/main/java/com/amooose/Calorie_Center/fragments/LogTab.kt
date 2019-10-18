@@ -61,16 +61,16 @@ class LogTab : Fragment() {
         calLogList.adapter = ArrayAdapter(view!!.context, android.R.layout.simple_list_item_1, arrayStrings)
 
         foodText = view.findViewById(R.id.foodText)
-        foodText.setInputType(InputType.TYPE_CLASS_TEXT);
+        foodText.setInputType(InputType.TYPE_CLASS_TEXT)
 
         calorieText = view.findViewById(R.id.calorieText)
         calorieText.setFilters(arrayOf<InputFilter>(InputFilterMinMax("1", "5000")))
-        calorieText.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+        calorieText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 addCalories()
             }
             false
-        })
+        }
 
         progressB = view.findViewById(R.id.calProgress)
         calsLeftText = view.findViewById(R.id.calsLeft)
@@ -139,12 +139,12 @@ class LogTab : Fragment() {
 
     // Displays a reset animation (Cals left text and progress bar)
     private fun resetAnim(){
-        var cals = getConsumedCals()
+        val cals = getConsumedCals()
 
         for (a in 1..cals) {
             val handler1 = Handler()
             handler1.postDelayed(object : Runnable {
-                override fun run() {3
+                override fun run() {
                     updateConsumedCals((tdee-cals)+a)
                 }
             }, 20+a.toLong())
@@ -157,12 +157,12 @@ class LogTab : Fragment() {
 
     // Displays a removing calories animation (Cals left text and progress bar)
     private fun removeAnim(remove: Int){
-        var cals = remove
-        var tot = tdee-getConsumedCals()
+        val cals = remove
+        val tot = tdee-getConsumedCals()
         for (a in 1..cals) {
             val handler1 = Handler()
             handler1.postDelayed(object : Runnable {
-                override fun run() {3
+                override fun run() {
                     updateConsumedCals((tot)+a)
                 }
             }, 20+a.toLong())
@@ -171,10 +171,10 @@ class LogTab : Fragment() {
 
     // Displays an adding calories animation (Cals left text and progress bar)
     private fun addAnim(added: String){
-        var prevCals = getConsumedCals()
+        val prevCals = getConsumedCals()
 
-        var cals = added.toInt()
-        var total = tdee-prevCals
+        val cals = added.toInt()
+        val total = tdee-prevCals
         for (a in 1..cals) {
             val handler1 = Handler()
             handler1.postDelayed(object : Runnable {
@@ -189,7 +189,7 @@ class LogTab : Fragment() {
     // Saves current calLog's list to SharedPreferences
     fun saveCalories(){
         val sharedPref = activity!!.getSharedPreferences("com.amooose.Calorie_Center", Context.MODE_PRIVATE)
-        var jsonArray = JSONArray(arrayStrings)
+        val jsonArray = JSONArray(arrayStrings)
         val editor = sharedPref.edit()
         editor.putString("CalList", jsonArray.toString())
         editor.commit()
@@ -199,7 +199,7 @@ class LogTab : Fragment() {
     private fun loadSavedCalories(){
         val sharedPref = activity!!.getSharedPreferences("com.amooose.Calorie_Center", Context.MODE_PRIVATE)
         val fetch = sharedPref.getString("CalList", "[]")
-        var jsonArray = JSONArray(fetch)
+        val jsonArray = JSONArray(fetch)
 
         if(!fetch.equals("[]")) {
             for (i in 0 until jsonArray.length()) {
@@ -228,9 +228,9 @@ class LogTab : Fragment() {
 
     // Adds and saves entered calories
     private fun addCalories(){
-        var date = Date()
+        val date = Date()
         val formatter = SimpleDateFormat("K:mma")
-        var time: String = ""
+        var time = ""
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         val isChecked = sharedPreferences.getBoolean(("time"), true)
         if(isChecked){
@@ -239,8 +239,14 @@ class LogTab : Fragment() {
         view!!.hideKeyboard()
         if(calorieText.length()>0) {
             val text = calorieText.text.toString()
+            var food = foodText.text.toString()
+
+            // '-' is our delimiter, remove it to avoid issues.
+            if(food.contains("-")){
+               food = food.replace("-","")
+            }
             addAnim(text)
-            arrayStrings.add(time+foodText.text.toString()+" - "+calorieText.text.toString())
+            arrayStrings.add(time+food+" - "+calorieText.text.toString())
             foodText.text.clear()
             calorieText.text.clear()
             updateListView()
