@@ -47,4 +47,9 @@ Ex `[12:04pm] Fish - 400`
 If enabled, when you finish logging for the day, if you finish before 4am it logs to the previous day.  
 This is for people who are up late and continue to eat past midnight.
 #### Sum same day  
-When ending the day more than once on the same day, instead of overwriting the day, it sums them up and re-adds the entry.
+When ending the day more than once on the same day, instead of overwriting the day, it sums them up and re-adds the entry.  
+
+### Notable libraries used
+Modified [Spruce Animation Library](https://github.com/amooose/spruce-android) (Custom fixed for Android 8+)  
+[MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)  
+[Android Gif](https://github.com/koral--/android-gif-drawable)
