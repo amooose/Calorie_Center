@@ -7,8 +7,8 @@ and track your progress over time as you log your daily caloric intake.
 </p>  
 
 # How it works
-Your TDEE is your daily calories that you burn, this is calculated for you as the first step in the app.
-Depending on if you know your Body Fat % or not, the following two forumulas will be used
+Your TDEE is the daily amount of calories that you burn, this is calculated for you during the setup in the app.
+Depending on if you know your Body Fat % or not, the following two forumulas will be used:
 
 ### Mifflin St. Jeor (Unknown BF%)  
 **Men**
