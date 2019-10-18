@@ -33,6 +33,8 @@ Press and hold the calories entry you\'d like to remove, and it will be removed 
 Press and hold the Kcal logo, this will log the current consumed calories for today and add it to the Track tab's graph.  
 
 ### Settings  
+#### Custom TDEE  
+Set your own custom TDEE based on your own calculations
 #### Show time in entry  
 If enabled, when logging calories, each entry will have the time in it.  
 Ex `[12:04pm] Fish - 400`  
