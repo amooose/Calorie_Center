@@ -1,5 +1,7 @@
 # Calorie Center
-A simple way to track and log your calories. You can manage and edit your current calorie intake, and track your progress over time as you log your daily caloric intake.  
+#### A simple way to track and log your calories.   
+You can manage and edit your current calorie intake,  
+and track your progress over time as you log your daily caloric intake.  
 <p align="center">
 <img src="https://i.imgur.com/4JkErKh.gif "alt="demogif" width="200">  
 </p>  
