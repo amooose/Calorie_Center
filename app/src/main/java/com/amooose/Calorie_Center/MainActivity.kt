@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.preference.PreferenceManager
@@ -111,7 +112,10 @@ class MainActivity : AppCompatActivity() {
 
         val prefMng = PreferenceManager.getDefaultSharedPreferences(this)
         val subDate = prefMng.getBoolean(("owl"), true)
-        if(subDate){
+        val date = Date()
+        val ampm = SimpleDateFormat("a").format(date)
+        val hour = SimpleDateFormat("K").format(date)
+        if(subDate && ampm == "AM" && hour == "4"){
             val subHelp = dateSubtract()
             currentDate = subHelp.subDate()
         }
