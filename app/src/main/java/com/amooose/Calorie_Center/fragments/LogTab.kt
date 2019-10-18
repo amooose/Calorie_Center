@@ -21,6 +21,7 @@ import android.view.animation.BounceInterpolator
 import android.animation.ObjectAnimator
 import android.os.Handler
 import android.text.InputType
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.ViewModelProviders
 import com.amooose.Calorie_Center.helpers.InputFilterMinMax
@@ -253,6 +254,15 @@ class LogTab : Fragment() {
 
         }
         saveCalories()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val sharedPref = activity!!.getSharedPreferences("com.amooose.Calorie_Center", Context.MODE_PRIVATE)
+        if(sharedPref.getInt("tdee",-1) != tdee){
+            tdee=sharedPref.getInt("tdee",-1)
+            updateConsumedCals()
+        }
     }
 
 

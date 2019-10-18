@@ -7,6 +7,7 @@ import com.willowtreeapps.spruce.Spruce
 import com.willowtreeapps.spruce.sort.DefaultSort
 
 class spruceHelper{
+
     fun animateSlideInLeft(animView: ViewGroup){
         val textViewAnimator = ObjectAnimator.ofFloat(animView, "translationX", -1000f, 0f)
         textViewAnimator.duration = 1000

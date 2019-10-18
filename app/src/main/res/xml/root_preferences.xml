@@ -24,6 +24,11 @@
             app:title="Redo Setup"
             app:summary="Change your personal info and run the setup again"/>
 
+        <Preference
+            app:key="custom"
+            app:title="Custom TDEE"
+            app:summary="Input your own TDEE"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/log_header">
